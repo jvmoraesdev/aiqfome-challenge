@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      aiqfome
-    </div>
-  );
+  return <div className="flex min-h-screen flex-col items-center justify-center">aiqfome</div>;
 }
