@@ -6,7 +6,23 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "test": "jest",
+    "postinstall": "husky innit",
+    "lint-staged": "cross-env lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css}": [
+      "stylelint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "next": "15.3.3",
@@ -14,7 +30,6 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "eslint-plugin-simple-import-sort": "^12.1.1",
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.29.0",
     "@next/eslint-plugin-next": "^15.3.3",
@@ -22,15 +37,19 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9.29.0",
     "eslint-config-next": "15.3.3",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jest": "^28.14.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-testing-library": "^7.5.3",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4",
