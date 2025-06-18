@@ -18,7 +18,12 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     ignores: ['node_modules/**', 'dist/**', 'build/**'],
-    languageOptions: { globals: globals.browser }
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    }
   },
   {
     plugins: {
@@ -53,6 +58,11 @@ export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   js.configs.recommended,
+  {
+    rules: {
+      'no-unused-vars': 'off'
+    }
+  },
   // jestPlugin.configs['flat/recommended'],
   // testingLibraryPlugin.configs.recommended,
   prettier
