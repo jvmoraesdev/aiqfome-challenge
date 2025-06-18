@@ -1,0 +1,148 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Restaurant_1",
+      "rating": 5,
+      "image": "icon.png",
+      "deliveryFee": 0,
+      "isOpen": true,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": 2,
+      "name": "Restaurant_2",
+      "rating": 5,
+      "image": "icon.png",
+      "deliveryFee": 0,
+      "isOpen": true,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": 3,
+      "name": "Restaurant_3",
+      "rating": 5,
+      "image": "icon.png",
+      "deliveryFee": 0,
+      "isOpen": true,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "price": 15,
+      "promotionPrice": 12,
+      "name": "Product_1",
+      "restaurantId": 1,
+      "image": "icon.png",
+      "description": "mocked_product_description",
+      "isAvailable": true,
+      "options": [
+        {
+          "id": 1,
+          "name": "Option_1",
+          "description": "mocked_option_description",
+          "mandatory": true,
+          "maxQuantity": 4,
+          "items": [
+            {
+              "id": 1,
+              "name": "Option_1",
+              "price": 5
+            },
+            {
+              "id": 2,
+              "name": "Option_2",
+              "price": 4
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "mandatory": false,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": 3,
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": 4,
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "price": 25,
+      "promotionPrice": 20,
+      "name": "Product_2",
+      "restaurantId": 1,
+      "image": "icon2.png",
+      "description": "mocked_product_description",
+      "isAvailable": true,
+      "options": [
+        {
+          "id": 1,
+          "name": "Option_1",
+          "description": "mocked_option_description",
+          "mandatory": true,
+          "maxQuantity": 4,
+          "items": [
+            {
+              "id": 1,
+              "name": "Option_1",
+              "price": 5
+            },
+            {
+              "id": 2,
+              "name": "Option_2",
+              "price": 4
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "mandatory": false,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": 3,
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": 4,
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
