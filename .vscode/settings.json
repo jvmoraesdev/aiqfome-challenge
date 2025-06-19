@@ -1,5 +1,5 @@
 {
-  "conventionalCommits.scopes": ["config", "qol", "server", "ts", "api"],
+  "conventionalCommits.scopes": ["config", "qol", "server", "ts", "api", "ui"],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
