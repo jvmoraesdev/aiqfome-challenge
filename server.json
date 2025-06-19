@@ -1,12 +1,11 @@
 {
   "restaurants": [
     {
-      "id": 1,
+      "id": "restaurant_1",
       "name": "Restaurant_1",
       "rating": 5,
       "image": "matsuri.png",
       "deliveryFee": 0,
-      "isOpen": true,
       "minimumOrderAmount": 32,
       "estimatedDeliveryTime": 40,
       "distance": 28,
@@ -15,12 +14,11 @@
       "freeDeliveryThreshold": 0
     },
     {
-      "id": 2,
+      "id": "restaurant_2",
       "name": "Restaurant_2",
       "rating": 5,
       "image": "matsuri.png",
       "deliveryFee": 0,
-      "isOpen": true,
       "minimumOrderAmount": 32,
       "estimatedDeliveryTime": 40,
       "distance": 28,
@@ -29,12 +27,11 @@
       "freeDeliveryThreshold": 0
     },
     {
-      "id": 3,
+      "id": "restaurant_3",
       "name": "Restaurant_3",
       "rating": 5,
       "image": "matsuri.png",
       "deliveryFee": 0,
-      "isOpen": true,
       "minimumOrderAmount": 32,
       "estimatedDeliveryTime": 40,
       "distance": 28,
@@ -43,50 +40,70 @@
       "freeDeliveryThreshold": 0
     }
   ],
+  "categories": [
+    {
+      "id": "niguiris",
+      "name": "Niguiris",
+      "restaurantId": "restaurant_1"
+    },
+    {
+      "id": "ceviches",
+      "name": "Ceviches",
+      "restaurantId": "restaurant_1",
+      "description": "um prato super refrescante de peixe fatiado e marinado com limão"
+    },
+    {
+      "id": "temakis",
+      "name": "Temakis",
+      "restaurantId": "restaurant_1",
+      "description": "sushi em forma de cone com salmão e cream cheese"
+    }
+  ],
   "products": [
     {
-      "id": 1,
+      "id": "product_1",
+      "categoryId": "temakis",
       "price": 15,
       "promotionPrice": 12,
       "name": "Product_1",
-      "restaurantId": 1,
+      "restaurantId": "restaurant_1",
       "image": "ceviche.png",
       "description": "mocked_product_description",
       "isAvailable": true,
       "options": [
         {
-          "id": 1,
+          "id": "option_1",
           "name": "Option_1",
           "description": "mocked_option_description",
           "mandatory": true,
           "maxQuantity": 4,
           "items": [
             {
-              "id": 1,
+              "id": "item_1",
               "name": "Option_1",
               "price": 5
             },
             {
-              "id": 2,
+              "id": "item_2",
               "name": "Option_2",
               "price": 4
             }
           ]
         },
         {
-          "id": 2,
+          "id": "option_2",
           "name": "Option_2",
           "description": "mocked_option_description",
           "mandatory": false,
           "maxQuantity": 2,
           "items": [
             {
-              "id": 3,
+              "id": "item_3",
               "name": "Option_3",
               "price": 2
             },
             {
-              "id": 4,
+              "id": "item_4",
               "name": "Option_4",
               "price": 3
             }
@@ -95,48 +112,49 @@
       ]
     },
     {
-      "id": 2,
+      "id": "product_2",
+      "categoryId": "temakis",
       "price": 25,
       "promotionPrice": 20,
       "name": "Product_2",
-      "restaurantId": 1,
+      "restaurantId": "restaurant_1",
       "image": "ceviche.png",
       "description": "mocked_product_description",
       "isAvailable": true,
       "options": [
         {
-          "id": 1,
+          "id": "option_1",
           "name": "Option_1",
           "description": "mocked_option_description",
           "mandatory": true,
           "maxQuantity": 4,
           "items": [
             {
-              "id": 1,
+              "id": "item_1",
               "name": "Option_1",
               "price": 5
             },
             {
-              "id": 2,
+              "id": "item_2",
               "name": "Option_2",
               "price": 4
             }
           ]
         },
         {
-          "id": 2,
+          "id": "option_2",
           "name": "Option_2",
           "description": "mocked_option_description",
           "mandatory": false,
           "maxQuantity": 2,
           "items": [
             {
-              "id": 3,
+              "id": "item_3",
               "name": "Option_3",
               "price": 2
             },
             {
-              "id": 4,
+              "id": "item_4",
               "name": "Option_4",
               "price": 3
             }
