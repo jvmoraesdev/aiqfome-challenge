@@ -1,0 +1,166 @@
+{
+  "restaurants": [
+    {
+      "id": "restaurant_1",
+      "name": "Restaurant_1",
+      "rating": 5,
+      "image": "matsuri.png",
+      "deliveryFee": 0,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "restaurant_2",
+      "name": "Restaurant_2",
+      "rating": 5,
+      "image": "matsuri.png",
+      "deliveryFee": 0,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "restaurant_3",
+      "name": "Restaurant_3",
+      "rating": 5,
+      "image": "matsuri.png",
+      "deliveryFee": 0,
+      "minimumOrderAmount": 32,
+      "estimatedDeliveryTime": 40,
+      "distance": 28,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "freeDeliveryThreshold": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": "niguiris",
+      "name": "Niguiris",
+      "restaurantId": "restaurant_1"
+    },
+    {
+      "id": "ceviches",
+      "name": "Ceviches",
+      "restaurantId": "restaurant_1",
+      "description": "um prato super refrescante de peixe fatiado e marinado com limão"
+    },
+    {
+      "id": "temakis",
+      "name": "Temakis",
+      "restaurantId": "restaurant_1",
+      "description": "sushi em forma de cone com salmão e cream cheese"
+    }
+  ],
+  "products": [
+    {
+      "id": "product_1",
+      "categoryId": "temakis",
+      "price": 15,
+      "promotionPrice": 12,
+      "name": "Product_1",
+      "restaurantId": "restaurant_1",
+      "image": "ceviche.png",
+      "description": "mocked_product_description",
+      "isAvailable": true,
+      "options": [
+        {
+          "id": "option_1",
+          "name": "Option_1",
+          "description": "mocked_option_description",
+          "mandatory": true,
+          "maxQuantity": 4,
+          "items": [
+            {
+              "id": "item_1",
+              "name": "Option_1",
+              "price": 5
+            },
+            {
+              "id": "item_2",
+              "name": "Option_2",
+              "price": 4
+            }
+          ]
+        },
+        {
+          "id": "option_2",
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "mandatory": false,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": "item_3",
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": "item_4",
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product_2",
+      "categoryId": "temakis",
+      "price": 25,
+      "promotionPrice": 20,
+      "name": "Product_2",
+      "restaurantId": "restaurant_1",
+      "image": "ceviche.png",
+      "description": "mocked_product_description",
+      "isAvailable": true,
+      "options": [
+        {
+          "id": "option_1",
+          "name": "Option_1",
+          "description": "mocked_option_description",
+          "mandatory": true,
+          "maxQuantity": 4,
+          "items": [
+            {
+              "id": "item_1",
+              "name": "Option_1",
+              "price": 5
+            },
+            {
+              "id": "item_2",
+              "name": "Option_2",
+              "price": 4
+            }
+          ]
+        },
+        {
+          "id": "option_2",
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "mandatory": false,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": "item_3",
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": "item_4",
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

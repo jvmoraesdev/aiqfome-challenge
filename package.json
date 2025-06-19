@@ -10,7 +10,8 @@
     "prepare": "husky",
     "test": "jest",
     "postinstall": "husky innit",
-    "lint-staged": "cross-env lint-staged"
+    "lint-staged": "cross-env lint-staged",
+    "server": "json-server -w server.json -p 4100 "
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -25,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@next/env": "^15.3.3",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -49,6 +51,7 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
+    "json-server": "^1.0.0-beta.3",
     "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
