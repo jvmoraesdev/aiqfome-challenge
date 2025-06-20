@@ -1,14 +1,10 @@
 import React from 'react';
 
-import home from '@/services/restaurants';
+import Home from '@/components/page/home';
+import restaurantsApi from '@/services/restaurants';
 
-export default async function Home() {
-  const a = await home().getAllRestaurants();
+export default async function Page() {
+  const restaurantList = await restaurantsApi().getAllRestaurants();
 
-  return (
-    <div className="flex h-screen w-screen flex-col items-stretch justify-center">
-      aiqfome
-      {a.map((teste) => teste.rating)}
-    </div>
-  );
+  return <Home restaurantList={restaurantList} />;
 }
