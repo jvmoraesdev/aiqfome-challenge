@@ -1,3 +1,1 @@
-import { restaurantsApi } from './restaurant';
-
-export default restaurantsApi;
+export { default } from './restaurant';

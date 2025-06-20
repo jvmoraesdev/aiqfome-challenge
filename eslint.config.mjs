@@ -12,8 +12,6 @@ import tseslint from 'typescript-eslint';
 // import testingLibraryPlugin from 'eslint-plugin-testing-library';
 // import jestPlugin from 'eslint-plugin-jest';
 
-console.log(reactHooksPlugin.configs['recommended-latest']);
-
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
