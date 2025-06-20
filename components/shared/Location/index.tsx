@@ -1,3 +1,1 @@
-import Location from './Location';
-
-export default Location;
+export { default } from './Location';
