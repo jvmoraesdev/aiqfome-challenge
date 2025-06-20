@@ -6,6 +6,7 @@ import React from 'react';
 
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
+import SearchProvider from '@/stores/SearchProvider';
 
 const nunito = Nunito({
   variable: '--font-nunito',
@@ -25,11 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <SearchProvider>
+        <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
+          <Header />
+
+          {children}
+          <Footer />
+        </body>
+      </SearchProvider>
     </html>
   );
 }
