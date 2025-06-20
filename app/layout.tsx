@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import React from 'react';
 
+import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
 const nunito = Nunito({
@@ -24,9 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.className} antialiased`}>
+      <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
