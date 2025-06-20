@@ -4,11 +4,12 @@ import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import React from 'react';
 
-import Header from '@/components/shared/Header/Header';
+import Header from '@/components/shared/Header';
 
 const nunito = Nunito({
   variable: '--font-nunito',
-  subsets: ['latin']
+  subsets: ['latin'],
+  weight: '700'
 });
 
 export const metadata: Metadata = {
