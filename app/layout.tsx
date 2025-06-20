@@ -29,8 +29,7 @@ export default function RootLayout({
       <SearchProvider>
         <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
           <Header />
-
-          {children}
+          <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
         </body>
       </SearchProvider>
