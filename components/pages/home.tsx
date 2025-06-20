@@ -14,7 +14,7 @@ interface IHome {
   restaurantList: IHomeRestaurant[];
 }
 
-const Home = ({ restaurantList }: IHome) => {
+const HomePage = ({ restaurantList }: IHome) => {
   const { searchTerm } = useSearch();
 
   const filteredRestaurants = restaurantList.filter((restaurant) =>
@@ -72,4 +72,4 @@ const Home = ({ restaurantList }: IHome) => {
   );
 };
 
-export default Home;
+export default HomePage;
