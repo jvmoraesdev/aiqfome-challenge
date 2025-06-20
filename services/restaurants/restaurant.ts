@@ -29,8 +29,7 @@ export const restaurantsApi: IRestaurantApi = () => {
       rating: restaurant.rating,
       image: restaurant.image,
       deliveryFee: restaurant.deliveryFee,
-      openingTime: restaurant.openingTime,
-      closingTime: restaurant.closingTime
+      isOpen: restaurant.isOpen
     }));
   };
 
