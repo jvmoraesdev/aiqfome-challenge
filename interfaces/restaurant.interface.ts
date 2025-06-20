@@ -11,12 +11,13 @@ export interface IRestaurant {
   distance: string;
   closingTime: string;
   openingTime: string;
+  isOpen: boolean;
   freeDeliveryThreshold: number;
 }
 
 export type IHomeRestaurant = Pick<
   IRestaurant,
-  'id' | 'name' | 'rating' | 'image' | 'deliveryFee' | 'openingTime' | 'closingTime'
+  'id' | 'name' | 'rating' | 'image' | 'deliveryFee' | 'isOpen'
 >;
 
 export interface IRestaurantProducts {

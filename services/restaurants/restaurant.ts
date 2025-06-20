@@ -6,7 +6,7 @@ import {
   IRestaurantProducts
 } from '@/interfaces/restaurant.interface';
 
-export const restaurantsApi: IRestaurantApi = () => {
+const restaurantsApi: IRestaurantApi = () => {
   const { API_BASE_URL } = process.env;
 
   /* 
@@ -29,8 +29,7 @@ export const restaurantsApi: IRestaurantApi = () => {
       rating: restaurant.rating,
       image: restaurant.image,
       deliveryFee: restaurant.deliveryFee,
-      openingTime: restaurant.openingTime,
-      closingTime: restaurant.closingTime
+      isOpen: restaurant.isOpen
     }));
   };
 
@@ -66,3 +65,5 @@ export const restaurantsApi: IRestaurantApi = () => {
     getRestaurantById
   };
 };
+
+export default restaurantsApi;

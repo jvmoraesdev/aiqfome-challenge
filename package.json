@@ -19,7 +19,7 @@
       "prettier --write"
     ],
     "*.{css}": [
-      "stylelint --fix"
+      "prettier --write"
     ],
     "*.{json,md}": [
       "prettier --write"
@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@next/env": "^15.3.3",
+    "classnames": "^2.5.1",
+    "lucide-react": "^0.518.0",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -35,6 +37,7 @@
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.29.0",
     "@next/eslint-plugin-next": "^15.3.3",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
