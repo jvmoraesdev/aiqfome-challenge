@@ -79,7 +79,7 @@
       "promotionPrice": 13.99,
       "name": "Califórnia",
       "restaurantId": "restaurant_1",
-      "image": "ceviche.png",
+      "image": "/ceviche.png",
       "description": "Kani, pepino e maçã ou manga",
       "tags": ["vegetarian"],
       "isAvailable": true,
@@ -89,7 +89,8 @@
           "name": "Option_1",
           "description": "mocked_option_description",
           "mandatory": true,
-          "maxQuantity": 4,
+          "minQuantity": 0,
+          "maxQuantity": 0,
           "items": [
             {
               "id": "item_1",
@@ -107,8 +108,27 @@
           "id": "option_2",
           "name": "Option_2",
           "description": "mocked_option_description",
-          "mandatory": false,
-          "maxQuantity": 2,
+          "minQuantity": 1,
+          "maxQuantity": 1,
+          "items": [
+            {
+              "id": "item_3",
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": "item_4",
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        },
+        {
+          "id": "option_2",
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "minQuantity": 0,
+          "maxQuantity": 8,
           "items": [
             {
               "id": "item_3",
@@ -131,46 +151,125 @@
       "promotionPrice": 0,
       "name": "Filadélfia",
       "restaurantId": "restaurant_1",
-      "image": "ceviche.png",
+      "image": "/ceviche.png",
       "description": "Arroz, salmão fresco, cream cheese e cebolinha",
       "isIncreasable": true,
       "isAvailable": true,
       "options": [
         {
-          "id": "option_1",
-          "name": "Option_1",
-          "description": "mocked_option_description",
-          "mandatory": true,
-          "maxQuantity": 4,
+          "id": "size",
+          "name": "qual o tamanho?",
+          "minQuantity": 1,
+          "maxQuantity": 1,
           "items": [
             {
-              "id": "item_1",
-              "name": "Option_1",
-              "price": 5
+              "id": "sz_o_1",
+              "name": "médio",
+              "promotionPrice": 19.9,
+              "price": 22.9
             },
             {
-              "id": "item_2",
-              "name": "Option_2",
-              "price": 4
+              "id": "sz_o_2",
+              "name": "grande",
+              "price": 28.9
             }
           ]
         },
         {
-          "id": "option_2",
-          "name": "Option_2",
-          "description": "mocked_option_description",
-          "mandatory": false,
+          "id": "acompanhamentos",
+          "name": "acompanhamentos",
+          "minQuantity": 1,
           "maxQuantity": 2,
           "items": [
             {
-              "id": "item_3",
-              "name": "Option_3",
-              "price": 2
+              "id": "shoyu",
+              "name": "shoyu"
             },
             {
-              "id": "item_4",
-              "name": "Option_4",
+              "id": "gengibre",
+              "name": "gengibre"
+            },
+            {
+              "id": "wasabi",
+              "name": "wasabi"
+            },
+            {
+              "id": "sem acompanhamentos",
+              "name": "sem acompanhamentos"
+            }
+          ]
+        },
+        {
+          "id": "bebida",
+          "name": "vai querer bebida?",
+          "minQuantity": 0,
+          "maxQuantity": 0,
+          "items": [
+            {
+              "id": "coca",
+              "name": "coca-cola",
+              "price": 5
+            },
+            {
+              "id": "fanta",
+              "name": "fanta laranja",
+              "price": 5
+            },
+            {
+              "id": "antarctica",
+              "name": "guaraná antarctica",
+              "price": 5
+            },
+            {
+              "id": "suc_pra_lar",
+              "name": "suco prats laranja",
+              "price": 6
+            },
+            {
+              "id": "agua_sem_gas",
+              "name": "água sem gás",
               "price": 3
+            }
+          ]
+        },
+        {
+          "id": "talher",
+          "name": "precisa de talher?",
+          "minQuantity": 1,
+          "maxQuantity": 1,
+          "items": [
+            {
+              "id": "hashi",
+              "name": "hashi"
+            },
+            {
+              "id": "garfo_faca_desc",
+              "name": "garfo e faca descatável",
+              "price": 1
+            }
+          ]
+        },
+        {
+          "id": "others",
+          "name": "mais alguma coisa?",
+          "minQuantity": 0,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": "bisc_sor",
+              "name": "biscoito da sorte",
+              "price": 2,
+              "promotionPrice": 1
+            },
+            {
+              "id": "rol_prim",
+              "name": "rolinho primavera",
+              "price": 8
+            },
+            {
+              "id": "guioza",
+              "name": "guioza",
+              "price": 6
             }
           ]
         }
@@ -183,7 +282,7 @@
       "promotionPrice": 20,
       "name": "Mix",
       "restaurantId": "restaurant_1",
-      "image": "ceviche.png",
+      "image": "/ceviche.png",
       "description": "mocked_product_description",
       "tags": ["spicy"],
       "isAvailable": true,
@@ -193,7 +292,6 @@
           "id": "option_1",
           "name": "Option_1",
           "description": "mocked_option_description",
-          "mandatory": true,
           "maxQuantity": 4,
           "items": [
             {
