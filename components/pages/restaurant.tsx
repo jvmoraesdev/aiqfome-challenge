@@ -2,8 +2,18 @@
 
 import React from 'react';
 
-const RestaurantPage = () => {
-  return <div></div>;
+import { IRestaurantProducts } from '@/interfaces/restaurant.interface';
+
+import CategoryProducts from '../shared/CategoryProducts';
+import RestaurantSummary from '../shared/RestaurantSummary';
+
+const RestaurantPage = ({ restaurant, categories }: IRestaurantProducts) => {
+  return (
+    <div>
+      <RestaurantSummary restaurant={restaurant} />
+      <CategoryProducts categories={categories} />
+    </div>
+  );
 };
 
 export default RestaurantPage;
