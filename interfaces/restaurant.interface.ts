@@ -7,8 +7,11 @@ export interface IRestaurant {
   image: string;
   minimumOrderPrice: number;
   deliveryFee: number;
-  estimatedDeliveryTime: number;
-  distance: string;
+  estimatedDeliveryTime: {
+    min: number;
+    max: number;
+  };
+  distance: number;
   closingTime: string;
   openingTime: string;
   isOpen: boolean;

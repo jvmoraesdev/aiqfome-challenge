@@ -3,11 +3,14 @@
     {
       "id": "restaurant_1",
       "name": "Restaurant_1",
-      "rating": 5.0,
+      "rating": 4.8,
       "image": "/matsuri.png",
       "deliveryFee": 0,
-      "minimumOrderAmount": 32,
-      "estimatedDeliveryTime": 40,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 40,
+        "max": 50
+      },
       "distance": 28,
       "closingTime": "23:59",
       "openingTime": "18:00",
@@ -20,8 +23,11 @@
       "rating": 4.8,
       "image": "/matsuri.png",
       "deliveryFee": 20,
-      "minimumOrderAmount": 32,
-      "estimatedDeliveryTime": 40,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 40,
+        "max": 50
+      },
       "distance": 28,
       "closingTime": "23:59",
       "openingTime": "18:00",
@@ -34,8 +40,11 @@
       "rating": 3.9,
       "image": "/matsuri.png",
       "deliveryFee": 2,
-      "minimumOrderAmount": 32,
-      "estimatedDeliveryTime": 40,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 40,
+        "max": 50
+      },
       "distance": 28,
       "closingTime": "23:59",
       "openingTime": "18:00",
@@ -64,14 +73,15 @@
   ],
   "products": [
     {
-      "id": "product_1",
+      "id": "california",
       "categoryId": "temakis",
-      "price": 15,
-      "promotionPrice": 12,
-      "name": "Product_1",
+      "price": 17,
+      "promotionPrice": 13.99,
+      "name": "Califórnia",
       "restaurantId": "restaurant_1",
       "image": "ceviche.png",
-      "description": "mocked_product_description",
+      "description": "Kani, pepino e maçã ou manga",
+      "tags": ["vegetarian"],
       "isAvailable": true,
       "options": [
         {
@@ -115,15 +125,69 @@
       ]
     },
     {
-      "id": "product_2",
+      "id": "filadelfia",
       "categoryId": "temakis",
-      "price": 25,
+      "price": 13.99,
+      "promotionPrice": 0,
+      "name": "Filadélfia",
+      "restaurantId": "restaurant_1",
+      "image": "ceviche.png",
+      "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+      "isIncreasable": true,
+      "isAvailable": true,
+      "options": [
+        {
+          "id": "option_1",
+          "name": "Option_1",
+          "description": "mocked_option_description",
+          "mandatory": true,
+          "maxQuantity": 4,
+          "items": [
+            {
+              "id": "item_1",
+              "name": "Option_1",
+              "price": 5
+            },
+            {
+              "id": "item_2",
+              "name": "Option_2",
+              "price": 4
+            }
+          ]
+        },
+        {
+          "id": "option_2",
+          "name": "Option_2",
+          "description": "mocked_option_description",
+          "mandatory": false,
+          "maxQuantity": 2,
+          "items": [
+            {
+              "id": "item_3",
+              "name": "Option_3",
+              "price": 2
+            },
+            {
+              "id": "item_4",
+              "name": "Option_4",
+              "price": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mix",
+      "categoryId": "temakis",
+      "price": 13.99,
       "promotionPrice": 20,
-      "name": "Product_2",
+      "name": "Mix",
       "restaurantId": "restaurant_1",
       "image": "ceviche.png",
       "description": "mocked_product_description",
+      "tags": ["spicy"],
       "isAvailable": true,
+      "isIncreasable": true,
       "options": [
         {
           "id": "option_1",

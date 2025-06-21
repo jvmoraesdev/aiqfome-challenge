@@ -19,6 +19,8 @@ export interface IProduct {
   image?: string;
   description?: string;
   isAvailable: boolean;
+  isIncreasable: boolean;
+  tags?: string[];
   options?: IProductOption[];
 }
 export interface IProductOptionItem {
