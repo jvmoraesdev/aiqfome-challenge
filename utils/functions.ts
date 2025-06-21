@@ -10,3 +10,9 @@ export const calculateDeliveryDay: ICalculateDeliveryDay = (estimatedDeliveryTim
 
   return isSameDay ? 'hoje' : 'amanhã';
 };
+
+type IFormatDecimal = (num: number, fixed: number) => string;
+
+export const formatDecimal: IFormatDecimal = (num, fixed) => {
+  return num.toFixed(fixed).replace('.', ',');
+};
