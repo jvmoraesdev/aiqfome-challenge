@@ -15,7 +15,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Card className="flex h-40 w-full items-center gap-[8px] bg-white px-[12px]">
+    <Card className="flex h-[40px] w-full items-center gap-[8px] bg-white px-[12px]">
       <Search size={16} color={COLORS['text-light-secondary']} />
       <input
         value={searchTerm}

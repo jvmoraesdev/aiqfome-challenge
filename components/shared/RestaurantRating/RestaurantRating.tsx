@@ -4,6 +4,7 @@ import { ChevronRight, Star } from 'lucide-react';
 import React from 'react';
 
 import Button from '@/components/ui/Button';
+import COLORS from '@/components/ui/Colors';
 import Text from '@/components/ui/Text';
 
 interface IRestaurantRating {
@@ -14,15 +15,21 @@ interface IRestaurantRating {
 
 const RestaurantRating = ({ isComplete = false, rate, action }: IRestaurantRating) => {
   const size = isComplete ? 12 : 14;
-  const width = isComplete ? 'w-[81px]' : 'w-[47px]';
+  const gap = isComplete ? 'gap-[4px]' : 'w-[2px]';
 
   return (
-    <div className={`flex w-[81px] flex-row items-center gap-[2px] ${width}`}>
+    <div className={`flex flex-row items-center ${gap} w-fit`}>
       <Star size={size} color="#FFB300" fill="#FFB300" />
       <Button action={action}>
-        <Text className={`text-[${size}px] flex flex-row items-center`}>
-          {rate.toFixed(1)}
-          {isComplete && <ChevronRight size={8} color="black" />}
+        <Text className={`text-[${size}px] text-dark-secondary`}>
+          {isComplete ? (
+            <div className="flex items-center gap-[4px]">
+              {`${rate} de 5`}
+              <ChevronRight size={8} color={COLORS['text-dark-secondary']} />
+            </div>
+          ) : (
+            rate
+          )}
         </Text>
       </Button>
     </div>

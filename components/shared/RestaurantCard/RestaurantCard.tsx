@@ -22,8 +22,8 @@ const RestaurantCard = ({ image, name, deliveryFee, rating, disabled }: IRestaur
         <Image
           src={image}
           alt={name}
-          width={30}
-          height={30}
+          width={72}
+          height={72}
           className={`${disabled ? 'opacity-45' : ''} size-[72px]`}
         />
         <div className="m-[12px] flex h-[50px] flex-col justify-between">

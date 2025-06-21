@@ -34,7 +34,7 @@ const HomePage = ({ restaurantList }: IHome) => {
   );
 
   return (
-    <div className="mt-[1px] flex flex-1 flex-col">
+    <div className="mt-[1px]">
       <Banner />
       <div className="flex flex-col gap-[12px] px-[16px] py-[24px]">
         <div className="flex flex-col gap-[16px] pb-[12px]">

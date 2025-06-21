@@ -7,7 +7,7 @@ import DeliveryIcon from '@/public/deliveryIcon.svg';
 
 interface IDeliveryTag {
   fee: number;
-  isGhostIcon: boolean;
+  isGhostIcon?: boolean;
 }
 
 const DeliveryTag = ({ fee, isGhostIcon }: IDeliveryTag) => {
