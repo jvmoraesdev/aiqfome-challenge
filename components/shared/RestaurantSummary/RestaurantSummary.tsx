@@ -7,7 +7,7 @@ import Card from '@/components/ui/Card';
 import COLORS from '@/components/ui/Colors';
 import Text from '@/components/ui/Text';
 import { IRestaurant } from '@/interfaces/restaurant.interface';
-import { calculateDeliveryDay } from '@/utils/functions';
+import { calculateDeliveryDay, formatDecimal } from '@/utils/functions';
 
 import DeliveryTag from '../DeliveryTag';
 import RestaurantRating from '../RestaurantRating';
@@ -88,7 +88,7 @@ const RestaurantSummary = ({ restaurant }: IRestaurantSummary) => {
             {`entrega grátis acima de R$ ${freeDeliveryThreshold.toFixed(2)}`}{' '}
           </Text>
         </Card>
-        <Text className="text-dark-secondary">{`pedido mínimo: R$ ${minimumOrderPrice}`}</Text>
+        <Text className="text-dark-secondary">{`pedido mínimo: R$ ${formatDecimal(minimumOrderPrice, 2)}`}</Text>
       </div>
     </div>
   );
