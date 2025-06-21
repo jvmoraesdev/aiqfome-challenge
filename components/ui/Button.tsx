@@ -1,19 +1,23 @@
 'use client';
 
-import classNames from 'classnames';
 import React, { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface IButton {
+  disabled?: boolean;
   children: ReactNode;
   action?: () => void;
   className?: string;
 }
 
-const Button = ({ children, action, className }: IButton) => {
-  const classes = classNames(`flex ${action ? 'cursor-pointer' : 'cursor-default'}`, className);
+const Button = ({ children, disabled = false, action, className }: IButton) => {
+  const classes = twMerge(
+    `flex ${disabled ? 'opacity-45' : ''} ${action && !disabled ? 'cursor-pointer' : 'cursor-default'}`,
+    className
+  );
 
   return (
-    <button className={classes} onClick={action}>
+    <button className={classes} onClick={!disabled ? action : () => {}}>
       {children}
     </button>
   );

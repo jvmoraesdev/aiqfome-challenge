@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface IText {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface IText {
 }
 
 const Text = ({ children, size, className }: IText) => {
-  const classes = classNames('', className);
+  const classes = twMerge('', className);
 
   if (size === 'h1') return <h1 className={classes}>{children}</h1>;
   if (size === 'h2') return <h2 className={classes}>{children}</h2>;
