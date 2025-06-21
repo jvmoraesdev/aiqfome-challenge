@@ -11,6 +11,7 @@
 
   --text-light-primary: #ffffff;
   --text-light-secondary: #eecffc;
+  --text-light-disabled: #a8adb7;
   --text-dark-contrast: #202326;
   --text-dark-primary: #393a3c;
   --text-dark-secondary: #6d6f73;
@@ -31,7 +32,7 @@
   --color-dark-contrast: var(--text-dark-contrast);
   --color-dark-primary: var(--text-dark-primary);
   --color-dark-secondary: var(--text-dark-secondary);
-
+  --color-light-disabled: var(--text-light-disabled);
   --color-border-light: var(--foreground-secondary);
 
   --font-sans: var(--font-nunito);

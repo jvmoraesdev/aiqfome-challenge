@@ -9,6 +9,7 @@ const COLORS = {
   'border-light': '#eef0f5',
   'text-light-primary': '#ffffff',
   'text-light-secondary': '#eecffc',
+  'text-light-disabled': '#a8adb7',
   'text-dark-contrast': '#202326',
   'text-dark-primary': '#393a3c',
   'text-dark-secondary': '#6d6f73'
