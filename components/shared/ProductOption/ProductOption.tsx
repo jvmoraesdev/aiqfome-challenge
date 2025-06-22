@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import Card from '@/components/ui/Card';
 import Text from '@/components/ui/Text';
-import { ISelectedOptions } from '@/interfaces/general.interface';
 import { IProductOption } from '@/interfaces/product.interface';
 
 import ChecklistOptions from './ChecklistOptions';
@@ -16,14 +15,14 @@ interface IProductOptionComponent {
 }
 
 const ProductOption = ({ productOption }: IProductOptionComponent) => {
-  const { name, minQuantity, maxQuantity, items } = productOption;
-  let type: string = 'checklist';
-  if (minQuantity === 1 && maxQuantity === 1) {
-    type = 'radio';
-  }
-  if (minQuantity === 0 && maxQuantity === 0) {
-    type = 'multiple';
-  }
+  const { name, minQuantity, maxQuantity, items, id } = productOption;
+
+  const type: 'radio' | 'checklist' | 'multiple' =
+    minQuantity === 1 && maxQuantity === 1
+      ? 'radio'
+      : minQuantity === 0 && maxQuantity === 0
+        ? 'multiple'
+        : 'checklist';
 
   const options = items.map((item) => ({
     label: item.name,
@@ -31,12 +30,6 @@ const ProductOption = ({ productOption }: IProductOptionComponent) => {
     price: item.price,
     promotionPrice: item.promotionPrice
   }));
-
-  const [selectedValues, setSelectedValues] = useState<ISelectedOptions[]>([]);
-
-  useEffect(() => {
-    console.log(selectedValues);
-  }, [selectedValues]);
 
   return (
     <div className="bg-background flex flex-col gap-[16px] px-[16px] py-[16px]">
@@ -65,29 +58,12 @@ const ProductOption = ({ productOption }: IProductOptionComponent) => {
 
       <div className="flex flex-col gap-[12px]">
         {type === 'checklist' && (
-          <ChecklistOptions
-            options={options}
-            selectedValues={selectedValues}
-            onChange={setSelectedValues}
-            maxSelection={maxQuantity}
-          />
+          <ChecklistOptions groupId={id} options={options} maxSelection={maxQuantity} />
         )}
 
-        {type === 'radio' && (
-          <RadioButtonOption
-            options={options}
-            selectedValue={selectedValues[0]?.value}
-            onChange={setSelectedValues}
-          />
-        )}
+        {type === 'radio' && <RadioButtonOption groupId={id} options={options} />}
 
-        {type === 'multiple' && (
-          <MultipleOptions
-            options={options}
-            selectedValues={selectedValues}
-            onChange={setSelectedValues}
-          />
-        )}
+        {type === 'multiple' && <MultipleOptions groupId={id} options={options} />}
       </div>
     </div>
   );

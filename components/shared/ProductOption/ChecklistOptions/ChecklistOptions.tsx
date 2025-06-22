@@ -2,22 +2,23 @@ import React from 'react';
 
 import Checklist from '@/components/ui/Checklist';
 import { IOption, IProductItemOption, ISelectedOptions } from '@/interfaces/general.interface';
+import useProduct from '@/stores/ProductProvider/useProduct';
 
 import OptionItemLabel from '../OptionItemLabel';
 
 interface IChecklistOptions {
   options: IProductItemOption[];
-  selectedValues: ISelectedOptions[];
-  onChange: (selectedValues: ISelectedOptions[]) => void;
   maxSelection?: number;
+  groupId: string;
 }
 
 const ChecklistOptions = ({
   options: checklistOptions,
-  selectedValues,
-  onChange,
-  maxSelection
+  maxSelection,
+  groupId
 }: IChecklistOptions) => {
+  const { selectedOptions, setSelectedOptions } = useProduct();
+
   const options: IOption[] = checklistOptions.map((checklistOption) => {
     return {
       value: checklistOption.value,
@@ -31,19 +32,23 @@ const ChecklistOptions = ({
     };
   });
 
-  const selectedIds = selectedValues.map((item) => item.value);
+  const selectedIds = selectedOptions
+    .filter((item) => item.groupId === groupId)
+    .map((item) => item.value);
 
   const handleChange = (newSelectedIds: string[]) => {
     const updatedSelected: ISelectedOptions[] = newSelectedIds.map((value) => {
       const option = checklistOptions.find((item) => item.value === value);
       return {
+        groupId,
         value,
         quantity: 1,
         price: option?.promotionPrice ?? option?.price ?? 0
       };
     });
 
-    onChange(updatedSelected);
+    const filtered = selectedOptions.filter((item) => item.groupId !== groupId);
+    setSelectedOptions([...filtered, ...updatedSelected]);
   };
 
   return (

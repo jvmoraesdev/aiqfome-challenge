@@ -13,6 +13,7 @@ export interface IProductItemOption {
 }
 
 export interface ISelectedOptions {
+  groupId: string;
   value: string;
   quantity: number;
   price: number;

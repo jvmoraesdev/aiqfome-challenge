@@ -1,32 +1,45 @@
 import React from 'react';
 
 import Counter from '@/components/ui/Counter';
-import { IProductItemOption, ISelectedOptions } from '@/interfaces/general.interface';
+import { IProductItemOption } from '@/interfaces/general.interface';
+import useProduct from '@/stores/ProductProvider/useProduct';
 
 import OptionItemLabel from '../OptionItemLabel';
 
 interface IMultipleOptions {
   options: IProductItemOption[];
-  selectedValues: ISelectedOptions[];
-  onChange: (selectedValues: ISelectedOptions[]) => void;
+  groupId: string;
 }
 
-const MultipleOptions = ({ options, selectedValues, onChange }: IMultipleOptions) => {
-  const getQuantity = (itemId: string) =>
-    selectedValues.find((item) => item.value === itemId)?.quantity ?? 0;
+const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
+  const { selectedOptions, setSelectedOptions } = useProduct();
+
+  const getQuantity = (itemId: string) => {
+    return (
+      selectedOptions.find((item) => item.groupId === groupId && item.value === itemId)?.quantity ??
+      0
+    );
+  };
 
   const handleChange = (itemId: string, newQuantity: number, price: number) => {
-    const updated = selectedValues.filter((item) => item.value !== itemId);
+    const filtered = selectedOptions.filter(
+      (item) => !(item.groupId === groupId && item.value === itemId)
+    );
 
     if (newQuantity > 0) {
-      updated.push({
-        value: itemId,
-        quantity: newQuantity,
-        price
-      });
+      setSelectedOptions([
+        ...filtered,
+        {
+          groupId,
+          value: itemId,
+          quantity: newQuantity,
+          price
+        }
+      ]);
+      return;
     }
 
-    onChange(updated);
+    setSelectedOptions([...filtered]);
   };
 
   return (
