@@ -6,6 +6,7 @@ import React from 'react';
 
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
+import ProductProvider from '@/stores/ProductProvider';
 import SearchProvider from '@/stores/SearchProvider';
 
 const nunito = Nunito({
@@ -27,11 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SearchProvider>
-        <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
-          <Header />
-          <div className="flex flex-1 flex-col">{children}</div>
-          <Footer />
-        </body>
+        <ProductProvider>
+          <body className={`${nunito.className} flex min-h-screen flex-col antialiased`}>
+            <Header />
+            <div className="bg-background mx-auto flex w-full max-w-[1024px] flex-1 flex-col">
+              {children}
+            </div>
+            <Footer />
+          </body>
+        </ProductProvider>
       </SearchProvider>
     </html>
   );

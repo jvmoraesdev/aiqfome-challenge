@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface ICard {
   className?: string;
@@ -7,8 +7,8 @@ interface ICard {
 }
 
 const Card = ({ className, children }: ICard) => {
-  const classes = classNames(
-    'border-border-light rounded-[8px] border-1 bg-foreground overflow-hidden',
+  const classes = twMerge(
+    'border-border-light bg-foreground rounded-[8px] b border-1 overflow-hidden',
     className
   );
 

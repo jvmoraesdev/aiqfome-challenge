@@ -27,13 +27,13 @@ export interface IProductOptionItem {
   id: string;
   name: string;
   price?: number;
+  promotionPrice?: number;
 }
 
 export interface IProductOption {
   id: string;
   name: string;
-  description?: string;
-  mandatory: boolean;
+  minQuantity: number;
   maxQuantity: number;
   items: IProductOptionItem[];
 }

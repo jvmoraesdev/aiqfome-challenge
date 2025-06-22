@@ -5,6 +5,7 @@ import Text from '@/components/ui/Text';
 import { IProduct } from '@/interfaces/product.interface';
 import SpicyIcon from '@/public/spicyIcon.svg';
 import VegetarianIcon from '@/public/vegetarianIcon.svg';
+import { formatDecimal } from '@/utils/functions';
 
 interface IProductItem {
   product: Omit<IProduct, 'options' | 'image' | 'categoryId' | 'restaurantId'>;
@@ -33,17 +34,17 @@ const ProductItem = ({ product }: IProductItem) => {
         {promotionPrice ? (
           <>
             <Text className="text-dark-secondary text-[12px] line-through">
-              {`R$ ${price.toFixed(2)}`}
+              {`R$ ${formatDecimal(price, 2)}`}
             </Text>
             <Text className="text-success-secondary flex items-center text-[14px]">
               <CircleDollarSign size={12} />
-              {`R$ ${promotionPrice.toFixed(2)}`}
+              {`R$ ${formatDecimal(promotionPrice, 2)}`}
             </Text>
           </>
         ) : (
           <>
             {isIncreasable && <Text className="text-dark-secondary text-[12px]">a partir de</Text>}
-            <Text className="text-primary text-[14px]">{`R$ ${price.toFixed(2)}`}</Text>
+            <Text className="text-primary text-[14px]">{`R$ ${formatDecimal(price, 2)}`}</Text>
           </>
         )}
       </div>
