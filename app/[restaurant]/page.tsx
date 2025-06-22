@@ -7,7 +7,5 @@ export default async function Restaurant({ params }: { params: Promise<{ restaur
   const restaurantId = (await params).restaurant;
   const restaurantWithProducts = await restaurantsApi().getRestaurantById(restaurantId);
 
-  console.log(restaurantWithProducts);
-
   return <RestaurantPage {...restaurantWithProducts} />;
 }
