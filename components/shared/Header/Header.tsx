@@ -1,6 +1,7 @@
 'use client';
 
 import { User } from 'lucide-react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
@@ -18,10 +19,12 @@ const Header = () => {
 
   return (
     <div
-      className={`bg-primary flex h-[${showSearch ? 128 : 72}px] w-full flex-col gap-[16px] p-[16px]`}
+      className={`bg-primary flex h-[${showSearch ? 128 : 72}px] w-screen flex-col gap-[16px] p-[16px]`}
     >
       <div className="align-center flex items-center justify-between">
-        <Logo alt="Logo aiqfome" width={32} />
+        <Link href={'/'}>
+          <Logo alt="Logo aiqfome" width={32} />
+        </Link>
         <Location />
         <User color={COLORS.background} />
       </div>
