@@ -7,6 +7,7 @@ const COLORS = {
   'success-secondary': '#02a117',
   'success-background': '#f2fafa',
   'border-light': '#eef0f5',
+  dividers: '#cdd1d9',
   'text-light-primary': '#ffffff',
   'text-light-secondary': '#eecffc',
   'text-light-disabled': '#a8adb7',
