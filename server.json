@@ -1,11 +1,28 @@
 {
   "restaurants": [
     {
-      "id": "restaurant_1",
-      "name": "Restaurant_1",
-      "rating": 4.8,
+      "id": "matsuri_concept",
+      "name": "Matsuri Concept",
+      "rating": 4.7,
       "image": "/matsuri.png",
       "deliveryFee": 0,
+      "minimumOrderPrice": 15,
+      "estimatedDeliveryTime": {
+        "min": 30,
+        "max": 40
+      },
+      "distance": 5.2,
+      "closingTime": "20:00",
+      "openingTime": "18:00",
+      "isOpen": true,
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "subway_av_center",
+      "name": "Subway Avenida Center",
+      "rating": 4.4,
+      "image": "/subway.png",
+      "deliveryFee": 6,
       "minimumOrderPrice": 32,
       "estimatedDeliveryTime": {
         "min": 40,
@@ -18,28 +35,62 @@
       "freeDeliveryThreshold": 0
     },
     {
-      "id": "restaurant_2",
-      "name": "Restaurant_2",
-      "rating": 4.8,
-      "image": "/matsuri.png",
-      "deliveryFee": 20,
+      "id": "bk_colombo",
+      "name": "Burger King Colombo",
+      "rating": 5,
+      "image": "/burgerking.png",
+      "deliveryFee": 6,
       "minimumOrderPrice": 32,
       "estimatedDeliveryTime": {
-        "min": 40,
-        "max": 50
+        "min": 60,
+        "max": 70
       },
-      "distance": 28,
+      "distance": 12,
       "closingTime": "23:59",
       "openingTime": "18:00",
       "isOpen": true,
       "freeDeliveryThreshold": 0
     },
     {
-      "id": "restaurant_3",
-      "name": "Restaurant_3",
-      "rating": 3.9,
+      "id": "bk_colombo_2",
+      "name": "Burger King Colombo",
+      "rating": 5,
+      "image": "/burgerking.png",
+      "deliveryFee": 6,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 60,
+        "max": 70
+      },
+      "distance": 12,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "isOpen": true,
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "matsuri_concept",
+      "name": "Matsuri Concept",
+      "rating": 4.7,
       "image": "/matsuri.png",
-      "deliveryFee": 2,
+      "deliveryFee": 0,
+      "minimumOrderPrice": 15,
+      "estimatedDeliveryTime": {
+        "min": 30,
+        "max": 40
+      },
+      "distance": 5.2,
+      "closingTime": "20:00",
+      "openingTime": "18:00",
+      "isOpen": false,
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "subway_av_center",
+      "name": "Subway Avenida Center",
+      "rating": 4.4,
+      "image": "/subway.png",
+      "deliveryFee": 6,
       "minimumOrderPrice": 32,
       "estimatedDeliveryTime": {
         "min": 40,
@@ -50,24 +101,58 @@
       "openingTime": "18:00",
       "isOpen": false,
       "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "bk_colombo",
+      "name": "Burger King Colombo",
+      "rating": 5,
+      "image": "/burgerking.png",
+      "deliveryFee": 6,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 60,
+        "max": 70
+      },
+      "distance": 12,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "isOpen": false,
+      "freeDeliveryThreshold": 0
+    },
+    {
+      "id": "bk_colombo_2",
+      "name": "Burger King Colombo",
+      "rating": 5,
+      "image": "/burgerking.png",
+      "deliveryFee": 6,
+      "minimumOrderPrice": 32,
+      "estimatedDeliveryTime": {
+        "min": 60,
+        "max": 70
+      },
+      "distance": 12,
+      "closingTime": "23:59",
+      "openingTime": "18:00",
+      "isOpen": false,
+      "freeDeliveryThreshold": 0
     }
   ],
   "categories": [
     {
       "id": "niguiris",
       "name": "Niguiris",
-      "restaurantId": "restaurant_1"
+      "restaurantId": "matsuri_concept"
     },
     {
       "id": "ceviches",
       "name": "Ceviches",
-      "restaurantId": "restaurant_1",
+      "restaurantId": "matsuri_concept",
       "description": "um prato super refrescante de peixe fatiado e marinado com limão"
     },
     {
       "id": "temakis",
       "name": "Temakis",
-      "restaurantId": "restaurant_1",
+      "restaurantId": "matsuri_concept",
       "description": "sushi em forma de cone com salmão e cream cheese"
     }
   ],
@@ -78,71 +163,11 @@
       "price": 17,
       "promotionPrice": 13.99,
       "name": "Califórnia",
-      "restaurantId": "restaurant_1",
+      "restaurantId": "matsuri_concept",
       "image": "/ceviche.png",
       "description": "Kani, pepino e maçã ou manga",
       "tags": ["vegetarian"],
-      "isAvailable": true,
-      "options": [
-        {
-          "id": "option_1",
-          "name": "Option_1",
-          "description": "mocked_option_description",
-          "mandatory": true,
-          "minQuantity": 0,
-          "maxQuantity": 0,
-          "items": [
-            {
-              "id": "item_1",
-              "name": "Option_1",
-              "price": 5
-            },
-            {
-              "id": "item_2",
-              "name": "Option_2",
-              "price": 4
-            }
-          ]
-        },
-        {
-          "id": "option_2",
-          "name": "Option_2",
-          "description": "mocked_option_description",
-          "minQuantity": 1,
-          "maxQuantity": 1,
-          "items": [
-            {
-              "id": "item_3",
-              "name": "Option_3",
-              "price": 2
-            },
-            {
-              "id": "item_4",
-              "name": "Option_4",
-              "price": 3
-            }
-          ]
-        },
-        {
-          "id": "option_2",
-          "name": "Option_2",
-          "description": "mocked_option_description",
-          "minQuantity": 0,
-          "maxQuantity": 8,
-          "items": [
-            {
-              "id": "item_3",
-              "name": "Option_3",
-              "price": 2
-            },
-            {
-              "id": "item_4",
-              "name": "Option_4",
-              "price": 3
-            }
-          ]
-        }
-      ]
+      "isAvailable": true
     },
     {
       "id": "filadelfia",
@@ -150,7 +175,7 @@
       "price": 13.99,
       "promotionPrice": 0,
       "name": "Filadélfia",
-      "restaurantId": "restaurant_1",
+      "restaurantId": "matsuri_concept",
       "image": "/ceviche.png",
       "description": "Arroz, salmão fresco, cream cheese e cebolinha",
       "isIncreasable": true,
@@ -281,51 +306,25 @@
       "price": 13.99,
       "promotionPrice": 20,
       "name": "Mix",
-      "restaurantId": "restaurant_1",
+      "restaurantId": "matsuri_concept",
       "image": "/ceviche.png",
-      "description": "mocked_product_description",
+      "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese, maionese, goiabada, banana, requeijão, molho de maracujá, manga, maçã e morango.",
       "tags": ["spicy"],
       "isAvailable": true,
-      "isIncreasable": true,
-      "options": [
-        {
-          "id": "option_1",
-          "name": "Option_1",
-          "description": "mocked_option_description",
-          "maxQuantity": 4,
-          "items": [
-            {
-              "id": "item_1",
-              "name": "Option_1",
-              "price": 5
-            },
-            {
-              "id": "item_2",
-              "name": "Option_2",
-              "price": 4
-            }
-          ]
-        },
-        {
-          "id": "option_2",
-          "name": "Option_2",
-          "description": "mocked_option_description",
-          "mandatory": false,
-          "maxQuantity": 2,
-          "items": [
-            {
-              "id": "item_3",
-              "name": "Option_3",
-              "price": 2
-            },
-            {
-              "id": "item_4",
-              "name": "Option_4",
-              "price": 3
-            }
-          ]
-        }
-      ]
+      "isIncreasable": true
+    },
+    {
+      "id": "salmao",
+      "categoryId": "temakis",
+      "price": 13.99,
+      "promotionPrice": 20,
+      "name": "Mix",
+      "restaurantId": "matsuri_concept",
+      "image": "/ceviche.png",
+      "description": "Alga, arroz, salmão fresco, pimenta e cebolinha",
+      "tags": ["spicy"],
+      "isAvailable": true,
+      "isIncreasable": true
     }
   ]
 }
