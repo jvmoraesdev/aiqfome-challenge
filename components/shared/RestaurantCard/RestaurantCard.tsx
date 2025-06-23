@@ -19,13 +19,15 @@ const RestaurantCard = ({ image, name, deliveryFee, rating, disabled }: IRestaur
   return (
     <Card>
       <div className="flex h-[72px]">
-        <Image
-          src={image}
-          alt={name}
-          width={72}
-          height={72}
-          className={`${disabled ? 'opacity-45' : ''} size-[72px]`}
-        />
+        <div className="relative aspect-[1/1] w-[72px]">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            priority
+            className={`${disabled ? 'opacity-45' : ''} object-cover`}
+          />
+        </div>
         <div className="m-[12px] flex h-[50px] flex-col justify-between">
           <Text className="text-dark-primary text-[16px]">{name}</Text>
           <div className="flex items-center justify-start gap-[4px]">

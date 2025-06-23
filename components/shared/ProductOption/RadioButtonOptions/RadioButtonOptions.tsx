@@ -8,10 +8,11 @@ import OptionItemLabel from '../OptionItemLabel';
 
 interface IRadioButtonOptions {
   groupId: string;
+  groupName: string;
   options: IProductItemOption[];
 }
 
-const RadioButtonOption = ({ groupId, options: radioOptions }: IRadioButtonOptions) => {
+const RadioButtonOption = ({ groupId, groupName, options: radioOptions }: IRadioButtonOptions) => {
   const { setSelectedOptions, selectedOptions } = useProduct();
 
   const handleChange = (value: string) => {
@@ -22,7 +23,9 @@ const RadioButtonOption = ({ groupId, options: radioOptions }: IRadioButtonOptio
       ...filtered,
       {
         groupId,
+        groupName,
         value,
+        name: option?.label || '',
         quantity: 1,
         price: option?.promotionPrice ?? option?.price ?? 0
       }
