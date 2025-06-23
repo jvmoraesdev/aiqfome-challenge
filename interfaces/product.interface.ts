@@ -37,3 +37,5 @@ export interface IProductOption {
   maxQuantity: number;
   items: IProductOptionItem[];
 }
+
+export type IProductItemData = Pick<IProduct, 'restaurantId' | 'id' | 'name'>;
