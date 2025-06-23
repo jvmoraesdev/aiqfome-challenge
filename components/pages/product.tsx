@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import { IProduct } from '@/interfaces/product.interface';
+import useOrder from '@/stores/OrderProvider/useOrder';
 import useProduct from '@/stores/ProductProvider/useProduct';
 import { areAllRequiredOptionsSelected, formatDecimal } from '@/utils/functions';
 
@@ -19,10 +20,21 @@ interface IProductPage {
 }
 
 const ProductPage = ({ product }: IProductPage) => {
-  const { name, restaurantId, price, image, description, isIncreasable, options } = product;
+  const {
+    name,
+    restaurantId,
+    price,
+    image,
+    description,
+    isIncreasable,
+    options,
+    id: productId
+  } = product;
   const router = useRouter();
 
-  const { notes, setNotes, quantity, setQuantity, finalValue, selectedOptions } = useProduct();
+  const { notes, setNotes, quantity, setQuantity, finalValue, selectedOptions, cleanProduct } =
+    useProduct();
+  const { addProductToOrder } = useOrder();
 
   const [availbleToOrder, setAvailbleToOrder] = useState<boolean>(false);
 
@@ -41,7 +53,27 @@ const ProductPage = ({ product }: IProductPage) => {
     router.push(`/${restaurantId}`);
   };
 
-  const handleAddToCart = () => {};
+  const handleAddToCart = () => {
+    addProductToOrder({
+      restaurantId,
+      productName: name,
+      productId,
+      quantity,
+      notes,
+      price: finalValue,
+      options: selectedOptions
+    });
+
+    router.push(`/${restaurantId}/order`);
+    cleanProduct();
+  };
+
+  useEffect(() => {
+    if (quantity > 1) {
+      setShowQuantity(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="bg-background flex flex-col gap-[16px] pb-[68px]">
@@ -101,7 +133,7 @@ const ProductPage = ({ product }: IProductPage) => {
       </div>
 
       {availbleToOrder && (
-        <div className="fixed bottom-[16px] z-50 flex h-[80px] w-full items-center justify-center">
+        <div className="fixed bottom-[16px] z-50 flex h-[80px] items-center justify-center self-center">
           <Button
             action={handleAddToCart}
             className="text-background bg-primary flex w-[342px] items-center justify-center rounded-[8px] py-[13px] text-[16px]"
