@@ -10,12 +10,14 @@ interface IChecklistOptions {
   options: IProductItemOption[];
   maxSelection?: number;
   groupId: string;
+  groupName: string;
 }
 
 const ChecklistOptions = ({
   options: checklistOptions,
   maxSelection,
-  groupId
+  groupId,
+  groupName
 }: IChecklistOptions) => {
   const { selectedOptions, setSelectedOptions } = useProduct();
 
@@ -41,7 +43,9 @@ const ChecklistOptions = ({
       const option = checklistOptions.find((item) => item.value === value);
       return {
         groupId,
+        groupName,
         value,
+        name: option?.label || '',
         quantity: 1,
         price: option?.promotionPrice ?? option?.price ?? 0
       };

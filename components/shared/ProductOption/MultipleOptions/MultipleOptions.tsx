@@ -9,9 +9,10 @@ import OptionItemLabel from '../OptionItemLabel';
 interface IMultipleOptions {
   options: IProductItemOption[];
   groupId: string;
+  groupName: string;
 }
 
-const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
+const MultipleOptions = ({ options, groupId, groupName }: IMultipleOptions) => {
   const { selectedOptions, setSelectedOptions } = useProduct();
 
   const getQuantity = (itemId: string) => {
@@ -21,7 +22,7 @@ const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
     );
   };
 
-  const handleChange = (itemId: string, newQuantity: number, price: number) => {
+  const handleChange = (itemId: string, itemName: string, newQuantity: number, price: number) => {
     const filtered = selectedOptions.filter(
       (item) => !(item.groupId === groupId && item.value === itemId)
     );
@@ -31,7 +32,9 @@ const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
         ...filtered,
         {
           groupId,
+          groupName,
           value: itemId,
+          name: itemName,
           quantity: newQuantity,
           price
         }
@@ -52,7 +55,12 @@ const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
             <Counter
               value={quantity}
               setValue={(newQty) =>
-                handleChange(option.value, newQty, option.promotionPrice ?? option.price ?? 0)
+                handleChange(
+                  option.value,
+                  option.label,
+                  newQty,
+                  option.promotionPrice ?? option.price ?? 0
+                )
               }
             />
 

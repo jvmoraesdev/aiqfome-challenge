@@ -58,12 +58,17 @@ const ProductOption = ({ productOption }: IProductOptionComponent) => {
 
       <div className="flex flex-col gap-[12px]">
         {type === 'checklist' && (
-          <ChecklistOptions groupId={id} options={options} maxSelection={maxQuantity} />
+          <ChecklistOptions
+            groupId={id}
+            groupName={name}
+            options={options}
+            maxSelection={maxQuantity}
+          />
         )}
 
-        {type === 'radio' && <RadioButtonOption groupId={id} options={options} />}
+        {type === 'radio' && <RadioButtonOption groupId={id} groupName={name} options={options} />}
 
-        {type === 'multiple' && <MultipleOptions groupId={id} options={options} />}
+        {type === 'multiple' && <MultipleOptions groupId={id} groupName={name} options={options} />}
       </div>
     </div>
   );
