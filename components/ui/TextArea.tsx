@@ -2,7 +2,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface ITextArea {
-  value: string;
+  value?: string;
   setValue: (value: string) => void;
   className: string;
   placeholder: string;

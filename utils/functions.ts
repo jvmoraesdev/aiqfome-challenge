@@ -1,4 +1,5 @@
 import { ISelectedOptions } from '@/interfaces/general.interface';
+import { IOrderItem } from '@/interfaces/order.interface';
 import { IProductOption } from '@/interfaces/product.interface';
 
 type ICalculateDeliveryDay = (estimatedDeliveryTime: number) => string;
@@ -42,10 +43,17 @@ export const areAllRequiredOptionsSelected: IAreAllRequiredOptionsSelected = (
   });
 };
 
-type ICalculateFinalValue = (selectedOptions: ISelectedOptions[], quantity: number) => number;
+type ICalculateProductPrice = (selectedOptions: ISelectedOptions[], quantity: number) => number;
 
-export const calculateFinalValue: ICalculateFinalValue = (selectedOptions, quantity) => {
+export const calculateProductPrice: ICalculateProductPrice = (selectedOptions, quantity) => {
   const itemValue = selectedOptions.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const finalValue = itemValue * quantity;
   return finalValue;
+};
+
+type ICalculateSubtotal = (products: IOrderItem[]) => number;
+
+export const calculateSubtotal: ICalculateSubtotal = (products) => {
+  const subtotal = products.reduce((sum, item) => sum + item.price, 0);
+  return subtotal;
 };
