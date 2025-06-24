@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { IPromotionalBanner } from '@/interfaces/general.interface';
 import { IHomeRestaurant } from '@/interfaces/restaurant.interface';
 import useSearch from '@/stores/SearchProvider/useSearch';
 
@@ -12,9 +13,10 @@ import Text from '../ui/Text';
 
 interface IHome {
   restaurantList: IHomeRestaurant[];
+  promotionalBanner: IPromotionalBanner;
 }
 
-const HomePage = ({ restaurantList }: IHome) => {
+const HomePage = ({ restaurantList, promotionalBanner }: IHome) => {
   const { searchTerm } = useSearch();
 
   const filteredRestaurants = restaurantList.filter((restaurant) =>
@@ -35,7 +37,7 @@ const HomePage = ({ restaurantList }: IHome) => {
 
   return (
     <div className="mt-[1px]">
-      <Banner />
+      <Banner banner={promotionalBanner} />
       <div className="flex flex-col gap-[12px] px-[16px] py-[24px]">
         <div className="flex flex-col gap-[16px] pb-[12px]">
           <Text className="text-primary text-[20px] font-extrabold">abertos</Text>

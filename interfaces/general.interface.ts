@@ -20,3 +20,9 @@ export interface ISelectedOptions {
   quantity: number;
   price: number;
 }
+
+export interface IPromotionalBanner {
+  url: string;
+  image: string;
+  alt: string;
+}

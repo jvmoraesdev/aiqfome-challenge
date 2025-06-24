@@ -1,3 +1,4 @@
+import { IPromotionalBanner } from './general.interface';
 import { IProduct } from './product.interface';
 import { IHomeRestaurant, IOrderRestaurant, IRestaurantProducts } from './restaurant.interface';
 
@@ -12,4 +13,8 @@ export type IProductApi = () => {
     restaurantId: string,
     productId: string
   ) => Promise<IProduct>;
+};
+
+export type ICampaignsApi = () => {
+  getPromotionalBanner: () => Promise<IPromotionalBanner>;
 };

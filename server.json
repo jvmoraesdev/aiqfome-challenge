@@ -326,5 +326,10 @@
       "isAvailable": true,
       "isIncreasable": true
     }
-  ]
+  ],
+  "banner": {
+    "url": "",
+    "image": "/banner.png",
+    "alt": "banner"
+  }
 }
