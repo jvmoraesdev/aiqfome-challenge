@@ -38,4 +38,4 @@ export interface IProductOption {
   items: IProductOptionItem[];
 }
 
-export type IProductItemData = Pick<IProduct, 'restaurantId' | 'id' | 'name'>;
+export type IProductItemData = Pick<IProduct, 'restaurantId' | 'id' | 'name' | 'price'>;

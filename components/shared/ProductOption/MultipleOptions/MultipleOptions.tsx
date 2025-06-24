@@ -13,36 +13,38 @@ interface IMultipleOptions {
 }
 
 const MultipleOptions = ({ options, groupId, groupName }: IMultipleOptions) => {
-  const { selectedOptions, setSelectedOptions } = useProduct();
+  const { product, setProduct } = useProduct();
 
   const getQuantity = (itemId: string) => {
     return (
-      selectedOptions.find((item) => item.groupId === groupId && item.value === itemId)?.quantity ??
-      0
+      product.options?.find((item) => item.groupId === groupId && item.value === itemId)
+        ?.quantity ?? 0
     );
   };
 
   const handleChange = (itemId: string, itemName: string, newQuantity: number, price: number) => {
-    const filtered = selectedOptions.filter(
-      (item) => !(item.groupId === groupId && item.value === itemId)
-    );
+    const filtered =
+      product.options?.filter((item) => !(item.groupId === groupId && item.value === itemId)) || [];
 
     if (newQuantity > 0) {
-      setSelectedOptions([
-        ...filtered,
-        {
-          groupId,
-          groupName,
-          value: itemId,
-          name: itemName,
-          quantity: newQuantity,
-          price
-        }
-      ]);
+      setProduct({
+        ...product,
+        options: [
+          ...filtered,
+          {
+            groupId,
+            groupName,
+            value: itemId,
+            name: itemName,
+            quantity: newQuantity,
+            price
+          }
+        ]
+      });
       return;
     }
 
-    setSelectedOptions([...filtered]);
+    setProduct({ ...product, options: [...filtered] });
   };
 
   return (

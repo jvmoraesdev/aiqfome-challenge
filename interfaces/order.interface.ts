@@ -1,12 +1,13 @@
 import { ISelectedOptions } from './general.interface';
 
 export interface IOrderItem {
-  restaurantId: string;
-  productId: string;
-  productName: string;
+  restaurantId?: string;
+  productId?: string;
+  productName?: string;
   quantity: number;
   price: number;
-  options: ISelectedOptions[];
+  originalPrice: number;
+  options?: ISelectedOptions[];
   notes?: string;
 }
 

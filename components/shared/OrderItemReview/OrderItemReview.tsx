@@ -24,7 +24,7 @@ const OrderItemReview = ({ product, id }: IOrderItemReview) => {
   const { setProduct } = useProduct();
   const router = useRouter();
 
-  const groupedOptions = product.options.reduce<Record<string, ISelectedOptions[]>>(
+  const groupedOptions = product.options?.reduce<Record<string, ISelectedOptions[]>>(
     (acc, option) => {
       if (!acc[option.groupId]) {
         acc[option.groupId] = [];
@@ -39,9 +39,9 @@ const OrderItemReview = ({ product, id }: IOrderItemReview) => {
     if (products) {
       setProducts(
         products.map((p) =>
-          p === product
+          p === product && p.options
             ? { ...p, quantity: newQuantity, price: calculateProductPrice(p.options, newQuantity) }
-            : p
+            : { ...p, quantity: newQuantity, price: p.originalPrice * newQuantity }
         )
       );
     }
@@ -80,16 +80,18 @@ const OrderItemReview = ({ product, id }: IOrderItemReview) => {
         />
       </div>
 
-      <div className="flex flex-col gap-[6px]">
-        {Object.entries(groupedOptions).map(([groupId, optionsInGroup]) => (
-          <OrderItemOptionReview
-            groupId={groupId}
-            optionsInGroup={optionsInGroup}
-            key={`${id}-${groupId}`}
-            id={`${id}-${groupId}`}
-          />
-        ))}
-      </div>
+      {groupedOptions && (
+        <div className="flex flex-col gap-[6px]">
+          {Object.entries(groupedOptions).map(([groupId, optionsInGroup]) => (
+            <OrderItemOptionReview
+              groupId={groupId}
+              optionsInGroup={optionsInGroup}
+              key={`${id}-${groupId}`}
+              id={`${id}-${groupId}`}
+            />
+          ))}
+        </div>
+      )}
 
       {product.notes && (
         <div className="bg-foreground flex gap-[4px] rounded-[4px] p-[6px]">

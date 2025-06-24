@@ -2,19 +2,12 @@
 
 import React, { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 
-import { ISelectedOptions } from '@/interfaces/general.interface';
 import { IOrderItem } from '@/interfaces/order.interface';
-import { IProductItemData } from '@/interfaces/product.interface';
 import { calculateProductPrice } from '@/utils/functions';
 
 interface IProductContext {
-  quantity: number;
-  setQuantity: (value: number) => void;
-  notes?: string;
-  setNotes: (value?: string) => void;
   finalValue: number;
-  selectedOptions: ISelectedOptions[];
-  setSelectedOptions: (value: ISelectedOptions[]) => void;
+  product: IOrderItem;
   setProduct: (product: IOrderItem) => void;
   cleanProduct: () => void;
 }
@@ -22,70 +15,53 @@ interface IProductContext {
 export const ProductContext = createContext<IProductContext | undefined>(undefined);
 
 const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [quantity, setQuantity] = useState<number>(1);
-  const [notes, setNotes] = useState<string | undefined>();
   const [finalValue, setFinalValue] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState<ISelectedOptions[]>([]);
-  const [currentItemData, setCurrentItemData] = useState<IProductItemData>();
+  const [product, setProduct] = useState<IOrderItem>({} as IOrderItem);
 
   useEffect(() => {
     const stored = localStorage.getItem('orderItem');
     if (stored) {
-      setProduct(JSON.parse(stored));
+      const objStorage = JSON.parse(stored);
+      if (
+        objStorage.productId === product?.productId &&
+        objStorage.restaurantId === product.restaurantId
+      ) {
+        setProduct({
+          ...product,
+          options: JSON.parse(stored).options || undefined
+        });
+      }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      'orderItem',
-      JSON.stringify({
-        restaurantId: currentItemData?.restaurantId,
-        productId: currentItemData?.id,
-        productName: currentItemData?.name,
-        quantity,
-        price: finalValue,
-        options: selectedOptions,
-        notes
-      })
-    );
-  }, [finalValue, currentItemData, notes, quantity, selectedOptions]);
+    if (product.productId) {
+      localStorage.setItem('orderItem', JSON.stringify(product));
+    }
+  }, [product]);
 
   useEffect(() => {
-    setFinalValue(calculateProductPrice(selectedOptions, quantity));
-  }, [quantity, selectedOptions]);
-
-  const setProduct = (product: IOrderItem) => {
-    setSelectedOptions(product.options);
-    setQuantity(product.quantity);
-    setNotes(product.notes);
-    setCurrentItemData({
-      id: product.productId,
-      name: product.productName,
-      restaurantId: product.restaurantId
-    });
-  };
+    if (product.options?.length) {
+      setFinalValue(calculateProductPrice(product.options, product.quantity));
+    } else {
+      setFinalValue(product?.price * product?.quantity);
+    }
+  }, [product]);
 
   const cleanProduct = () => {
-    setQuantity(1);
-    setNotes(undefined);
     setFinalValue(0);
-    setSelectedOptions([]);
+    setProduct({} as IOrderItem);
     localStorage.removeItem('orderItem');
   };
 
   const contextValue: IProductContext = useMemo(
     () => ({
-      quantity,
-      setQuantity,
-      notes,
-      setNotes,
       finalValue,
-      selectedOptions,
-      setSelectedOptions,
+      product,
       setProduct,
       cleanProduct
     }),
-    [quantity, notes, finalValue, selectedOptions]
+    [finalValue, product]
   );
 
   return <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>;
