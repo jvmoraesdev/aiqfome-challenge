@@ -14,7 +14,15 @@ export interface IProductItemOption {
 
 export interface ISelectedOptions {
   groupId: string;
+  groupName: string;
   value: string;
+  name: string;
   quantity: number;
   price: number;
+}
+
+export interface IPromotionalBanner {
+  url: string;
+  image: string;
+  alt: string;
 }

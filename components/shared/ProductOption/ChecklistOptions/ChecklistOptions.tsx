@@ -10,14 +10,16 @@ interface IChecklistOptions {
   options: IProductItemOption[];
   maxSelection?: number;
   groupId: string;
+  groupName: string;
 }
 
 const ChecklistOptions = ({
   options: checklistOptions,
   maxSelection,
-  groupId
+  groupId,
+  groupName
 }: IChecklistOptions) => {
-  const { selectedOptions, setSelectedOptions } = useProduct();
+  const { product, setProduct } = useProduct();
 
   const options: IOption[] = checklistOptions.map((checklistOption) => {
     return {
@@ -32,23 +34,30 @@ const ChecklistOptions = ({
     };
   });
 
-  const selectedIds = selectedOptions
-    .filter((item) => item.groupId === groupId)
-    .map((item) => item.value);
+  const selectedIds = product?.options
+    ? product?.options.filter((item) => item.groupId === groupId).map((item) => item.value)
+    : [];
 
   const handleChange = (newSelectedIds: string[]) => {
     const updatedSelected: ISelectedOptions[] = newSelectedIds.map((value) => {
       const option = checklistOptions.find((item) => item.value === value);
       return {
         groupId,
+        groupName,
         value,
+        name: option?.label || '',
         quantity: 1,
         price: option?.promotionPrice ?? option?.price ?? 0
       };
     });
 
-    const filtered = selectedOptions.filter((item) => item.groupId !== groupId);
-    setSelectedOptions([...filtered, ...updatedSelected]);
+    const filtered = product?.options
+      ? product?.options.filter((item) => item.groupId !== groupId)
+      : [];
+    setProduct({
+      ...product,
+      options: [...filtered, ...updatedSelected]
+    });
   };
 
   return (

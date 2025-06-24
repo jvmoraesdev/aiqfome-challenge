@@ -9,37 +9,42 @@ import OptionItemLabel from '../OptionItemLabel';
 interface IMultipleOptions {
   options: IProductItemOption[];
   groupId: string;
+  groupName: string;
 }
 
-const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
-  const { selectedOptions, setSelectedOptions } = useProduct();
+const MultipleOptions = ({ options, groupId, groupName }: IMultipleOptions) => {
+  const { product, setProduct } = useProduct();
 
   const getQuantity = (itemId: string) => {
     return (
-      selectedOptions.find((item) => item.groupId === groupId && item.value === itemId)?.quantity ??
-      0
+      product.options?.find((item) => item.groupId === groupId && item.value === itemId)
+        ?.quantity ?? 0
     );
   };
 
-  const handleChange = (itemId: string, newQuantity: number, price: number) => {
-    const filtered = selectedOptions.filter(
-      (item) => !(item.groupId === groupId && item.value === itemId)
-    );
+  const handleChange = (itemId: string, itemName: string, newQuantity: number, price: number) => {
+    const filtered =
+      product.options?.filter((item) => !(item.groupId === groupId && item.value === itemId)) || [];
 
     if (newQuantity > 0) {
-      setSelectedOptions([
-        ...filtered,
-        {
-          groupId,
-          value: itemId,
-          quantity: newQuantity,
-          price
-        }
-      ]);
+      setProduct({
+        ...product,
+        options: [
+          ...filtered,
+          {
+            groupId,
+            groupName,
+            value: itemId,
+            name: itemName,
+            quantity: newQuantity,
+            price
+          }
+        ]
+      });
       return;
     }
 
-    setSelectedOptions([...filtered]);
+    setProduct({ ...product, options: [...filtered] });
   };
 
   return (
@@ -52,7 +57,12 @@ const MultipleOptions = ({ options, groupId }: IMultipleOptions) => {
             <Counter
               value={quantity}
               setValue={(newQty) =>
-                handleChange(option.value, newQty, option.promotionPrice ?? option.price ?? 0)
+                handleChange(
+                  option.value,
+                  option.label,
+                  newQty,
+                  option.promotionPrice ?? option.price ?? 0
+                )
               }
             />
 

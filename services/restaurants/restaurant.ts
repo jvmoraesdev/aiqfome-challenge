@@ -2,6 +2,7 @@ import { IRestaurantApi } from '@/interfaces/api.interface';
 import { ICategory, IProduct } from '@/interfaces/product.interface';
 import {
   IHomeRestaurant,
+  IOrderRestaurant,
   IRestaurant,
   IRestaurantProducts
 } from '@/interfaces/restaurant.interface';
@@ -33,7 +34,25 @@ const restaurantsApi: IRestaurantApi = () => {
     }));
   };
 
-  const getRestaurantById = async (restaurantId: string): Promise<IRestaurantProducts> => {
+  const getRestaurantById = async (restaurantId: string): Promise<IOrderRestaurant> => {
+    const restaurant = await fetch(`${API_BASE_URL}/restaurants?id=${restaurantId}`);
+    if (!restaurant) {
+      throw new Error(`Failed to fetch restaurant ${restaurantId}`);
+    }
+
+    const restaurantData = await restaurant.json();
+
+    return {
+      id: restaurantData[0].id,
+      isOpen: restaurantData[0].isOpen,
+      name: restaurantData[0].name,
+      image: restaurantData[0].image
+    };
+  };
+
+  const getRestaurantWithProductsById = async (
+    restaurantId: string
+  ): Promise<IRestaurantProducts> => {
     const restaurant = await fetch(`${API_BASE_URL}/restaurants?id=${restaurantId}`);
     const categories = await fetch(`${API_BASE_URL}/categories?restaurantId=${restaurantId}`);
     const products = await fetch(`${API_BASE_URL}/products?restaurantId=${restaurantId}`);
@@ -62,6 +81,7 @@ const restaurantsApi: IRestaurantApi = () => {
 
   return {
     getAllRestaurants,
+    getRestaurantWithProductsById,
     getRestaurantById
   };
 };

@@ -33,7 +33,7 @@ const CategoryProducts = ({ categories }: ICategoryProducts) => {
           <div className="flex flex-col gap-[24px]">
             {category.products.map((product) =>
               product.isAvailable ? (
-                <Link href={`./${pathname}/${product.id}`} key={product.id}>
+                <Link href={`./${pathname}/item/${product.id}`} key={product.id}>
                   <ProductItem product={product} />
                 </Link>
               ) : (

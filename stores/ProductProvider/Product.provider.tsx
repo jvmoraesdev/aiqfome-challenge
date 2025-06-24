@@ -2,42 +2,66 @@
 
 import React, { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 
-import { ISelectedOptions } from '@/interfaces/general.interface';
-import { calculateFinalValue } from '@/utils/functions';
+import { IOrderItem } from '@/interfaces/order.interface';
+import { calculateProductPrice } from '@/utils/functions';
 
 interface IProductContext {
-  quantity: number;
-  setQuantity: (value: number) => void;
-  notes: string;
-  setNotes: (value: string) => void;
   finalValue: number;
-  selectedOptions: ISelectedOptions[];
-  setSelectedOptions: (value: ISelectedOptions[]) => void;
+  product: IOrderItem;
+  setProduct: (product: IOrderItem) => void;
+  cleanProduct: () => void;
 }
 
 export const ProductContext = createContext<IProductContext | undefined>(undefined);
 
 const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [quantity, setQuantity] = useState<number>(1);
-  const [notes, setNotes] = useState<string>('');
   const [finalValue, setFinalValue] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState<ISelectedOptions[]>([]);
+  const [product, setProduct] = useState<IOrderItem>({} as IOrderItem);
 
   useEffect(() => {
-    setFinalValue(calculateFinalValue(selectedOptions, quantity));
-  }, [quantity, selectedOptions]);
+    const stored = localStorage.getItem('orderItem');
+    if (stored) {
+      const objStorage = JSON.parse(stored);
+      if (
+        objStorage.productId === product?.productId &&
+        objStorage.restaurantId === product.restaurantId
+      ) {
+        setProduct({
+          ...product,
+          options: JSON.parse(stored).options || undefined
+        });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (product.productId) {
+      localStorage.setItem('orderItem', JSON.stringify(product));
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (product.options?.length) {
+      setFinalValue(calculateProductPrice(product.options, product.quantity));
+    } else {
+      setFinalValue(product?.price * product?.quantity);
+    }
+  }, [product]);
+
+  const cleanProduct = () => {
+    setFinalValue(0);
+    setProduct({} as IOrderItem);
+    localStorage.removeItem('orderItem');
+  };
 
   const contextValue: IProductContext = useMemo(
     () => ({
-      quantity,
-      setQuantity,
-      notes,
-      setNotes,
       finalValue,
-      selectedOptions,
-      setSelectedOptions
+      product,
+      setProduct,
+      cleanProduct
     }),
-    [quantity, notes, finalValue, selectedOptions]
+    [finalValue, product]
   );
 
   return <ProductContext.Provider value={contextValue}>{children}</ProductContext.Provider>;

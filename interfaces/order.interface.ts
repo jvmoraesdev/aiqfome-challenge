@@ -1,16 +1,14 @@
-export interface IOrderOption {
-  name: string;
-  selectedOptions: string[];
-  price?: number;
-}
+import { ISelectedOptions } from './general.interface';
 
 export interface IOrderItem {
-  productId: string;
-  productName: string;
+  restaurantId?: string;
+  productId?: string;
+  productName?: string;
   quantity: number;
   price: number;
-  options: IOrderOption[];
-  observations?: string;
+  originalPrice: number;
+  options?: ISelectedOptions[];
+  notes?: string;
 }
 
 export interface IOrder {

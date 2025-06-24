@@ -23,6 +23,8 @@ export type IHomeRestaurant = Pick<
   'id' | 'name' | 'rating' | 'image' | 'deliveryFee' | 'isOpen'
 >;
 
+export type IOrderRestaurant = Pick<IRestaurant, 'id' | 'name' | 'isOpen' | 'image'>;
+
 export interface IRestaurantProducts {
   restaurant: IRestaurant;
   categories: IProductCategory[];

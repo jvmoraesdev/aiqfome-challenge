@@ -19,9 +19,9 @@ const Header = () => {
 
   return (
     <div
-      className={`bg-primary flex h-[${showSearch ? 128 : 72}px] w-screen flex-col gap-[16px] p-[16px]`}
+      className={`bg-primary flex h-[${showSearch ? 128 : 72}px] w-screen flex-col gap-[16px] p-[16px] md:items-center md:justify-center`}
     >
-      <div className="align-center flex items-center justify-between">
+      <div className="align-center p-16px flex items-center justify-between md:w-[752px] lg:w-[1008px]">
         <Link href={'/'}>
           <Logo alt="Logo aiqfome" width={32} />
         </Link>

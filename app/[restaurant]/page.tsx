@@ -5,7 +5,7 @@ import restaurantsApi from '@/services/restaurants';
 
 export default async function Restaurant({ params }: { params: Promise<{ restaurant: string }> }) {
   const restaurantId = (await params).restaurant;
-  const restaurantWithProducts = await restaurantsApi().getRestaurantById(restaurantId);
+  const restaurantWithProducts = await restaurantsApi().getRestaurantWithProductsById(restaurantId);
 
   return <RestaurantPage {...restaurantWithProducts} />;
 }

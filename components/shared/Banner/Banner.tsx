@@ -1,10 +1,20 @@
 import Image from 'next/image';
 import React from 'react';
 
-const Banner = () => {
-  return (
-    <div className="relative aspect-[3/1] w-full sm:aspect-[4/1] md:aspect-[5/1] lg:aspect-[6/1] xl:aspect-[7/1]">
-      <Image alt="banner" src="/banner.png" fill className="object-cover" priority />
+import { IPromotionalBanner } from '@/interfaces/general.interface';
+
+interface IBanner {
+  banner: IPromotionalBanner;
+}
+
+const Banner = ({ banner }: IBanner) => {
+  return banner.url ? (
+    <a className="relative flex aspect-[3/1] w-full" href={banner.url}>
+      <Image alt={banner.alt} src={banner.image} fill className="object-cover" priority />
+    </a>
+  ) : (
+    <div className="relative flex aspect-[3/1] w-full">
+      <Image alt={banner.alt} src={banner.image} fill className="object-cover" priority />
     </div>
   );
 };

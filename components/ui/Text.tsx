@@ -8,7 +8,7 @@ interface IText {
 }
 
 const Text = ({ children, size, className }: IText) => {
-  const classes = twMerge('', className);
+  const classes = twMerge('font-bold', className);
 
   if (size === 'h1') return <h1 className={classes}>{children}</h1>;
   if (size === 'h2') return <h2 className={classes}>{children}</h2>;

@@ -5,7 +5,7 @@ import Text from '@/components/ui/Text';
 import { IProduct } from '@/interfaces/product.interface';
 import SpicyIcon from '@/public/spicyIcon.svg';
 import VegetarianIcon from '@/public/vegetarianIcon.svg';
-import { formatDecimal } from '@/utils/functions';
+import { formatDecimal, limiteTextCharacters } from '@/utils/functions';
 
 interface IProductItem {
   product: Omit<IProduct, 'options' | 'image' | 'categoryId' | 'restaurantId'>;
@@ -26,7 +26,7 @@ const ProductItem = ({ product }: IProductItem) => {
         </Text>
         {description && (
           <Text className="text-dark-secondary w-[95%] text-[12px] font-normal break-words">
-            {description}
+            {limiteTextCharacters(description, 100)}
           </Text>
         )}
       </div>
