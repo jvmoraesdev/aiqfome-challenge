@@ -19,8 +19,8 @@ const SearchBar = () => {
         setValue={setSearchTerm}
         type="text"
         placeholder="busque pela loja ou culinária"
+        className="w-[100%]"
       />
-      <input />
     </Card>
   );
 };
